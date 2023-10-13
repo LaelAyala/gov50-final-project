@@ -8,11 +8,11 @@ output:
 ---
 
 
-
 ## Project thoughts
 
 I am interested in exploring data related to sports analytics particularly related to hitting stats and batspeeds in softball. Some research questions are does grunting improve batspeed and power in softball swings? I can also look at professional baseball statistics and find out whether having a modified defense( where the fielders all shift to one side of the field) actually works better than a normal defense. These are just some initial questions, but I will ponder more later.
 
+---
 
 ## Proposal 
 
