@@ -7,23 +7,21 @@ output:
     self_contained: false
 ---
 
-
 ## Project thoughts
 
 I am interested in exploring data related to sports analytics particularly related to hitting stats and batspeeds in softball. Some research questions are does grunting improve batspeed and power in softball swings? I can also look at professional baseball statistics and find out whether having a modified defense( where the fielders all shift to one side of the field) actually works better than a normal defense. These are just some initial questions, but I will ponder more later.
 
----
+------------------------------------------------------------------------
 
-## Proposal 
+## Proposal
 
+To what extent are left-handed batters more effective than right handed batters in MLB? Left-handed batters are believed to have 3 big advantages. 1. Because they are closer to 1st base, it is easier for them to out run ground balls and be safe. 2. A majority of MLB pitchers are right handed, and left-handed batters supposedly hit better off of right-handed pitchers. 3. With a runner on first and the second-basemen shifting closer to 2nd to get a double play, it is easier for a left-handed batter to pull the ball in-between the first and second baseman, and actually make it harder for the fielders to make a double play. My hypothesis is that left-handed hitters do not have a higher on-base percentage than right-handed hitters, but that they do hit better off of right-handed pitchers, and are less likely to have double plays made on them with a runner on 1st. I think that the closeness of the left-handed hitters (LHH) to 1st base is offset by the tendency for LH hitters to "pull" the ball to the second-baseman and they have to make a shorter throw. However, I do think that LH batters hit better off of RH pitchers as the ball is easier to hit if its breaking into you and other research studies have supported this. Finally, because hitters have the tendency to pull the ball, I do think the 2nd baseman has a harder time getting a double play from a LH hitter, and thus there will be less double plays with LH hitters.Therefore LH hitters will be somewhat more effective than RH hitters.
 
-To what extent are left-handed batters more effective than right handed batters in MLB? Left-handed batters are believed to have 3 big advantages. 1. Because they are closer to 1st base, it is easier for them to out run ground balls and be safe. 2. A majority of MLB pitchers are right handed, and left-handed batters supposedly hit better off of right-handed pitchers. 3. With a runner on first and the second-basemen shifting closer to 2nd to get a double play, it is easier for a left-handed batter to pull the ball in-between the first and second baseman, and actually make it harder for the fielders to make a double play. My hypothesis is that left-handed hitters do not have a higher on-base percentage than right-handed hitters, but that they do hit better off of right-handed pitchers, and are less likely to have double plays made on them with a runner on 1st. I think that the closeness of the left-handed hitters (LHH) to 1st base is offset by the tendency for LH hitters to "pull" the ball to the second-baseman and they have to make a shorter throw. However, I do think that LH batters hit better off of RH pitchers as the ball is easier to hit if its breaking into you and other research studies have supported this. Finally, because hitters have the tendency to pull the ball, I do think the 2nd baseman has a harder time getting a double play from a LH hitter, and thus there will be less double plays with LH hitters.Therefore LH hitters will be somewhat more effective than RH hitters. 
+The dataset I am going to use is Baseballr is an R package than can be used to analyze baseball data. Baseballr has scaped data from various sources and created an R package so it can easily be used. This data includes box scores, standings, sabermetrics, etc. My explanatory variables of interest are the handedness of batter, Left-handed vs Right-handed, and comparing the metrics between the two groups. My outcome/dependent variables are On-base percentage(OBP), Batting Averages(BA), and slugging percentage(SLG). On Base Percentage is the ratio of that the hitter gets on base(via walks, hits, errors, etc) to their total number of at-bats. I am assuming that the number of walks and errors is randomly distributed among all-types of batters, and that if LH batters had a higher OBP it is because they are more likely to beat out the throw to 1st.Finding no correlation would support my hypothesis. If LH hitters hit better off of RH pitchers(RHP), we'd expect them to have a higher BA(ratio of hits/ At-bats) off of RHP than LHP.Finding a positive correlation in this variable would prove my hypothesis. Finally, if LHH were less likely to be a victim of a double play, they would have a higher BA and/or SLG( ratio between #of At-Bats where they get a double or more/ #total At-Bats) with a runner on 1st and less than 2 outs than RHH. Finding a positive correlation between LHH and BA with runner on 1st and 2 outs would support my hypothesis. No correlation between any of the 3 focuses of study or a negative correlation would disprove my hypothesis.
 
-The dataset I am going to use is Baseballr is an R package than can be used to analyze baseball data. Baseballr has scaped data from various sources and created an R package so it can easily be used. This data includes box scores, standings, sabermetrics, etc. My explanatory variables of interest are the handedness of batter, Left-handed vs Right-handed, and comparing the metrics between the two groups. My outcome/dependent variables are On-base percentage(OBP), Batting Averages(BA),  and slugging percentage(SLG). On Base Percentage is the ratio of that the hitter gets on base(via walks, hits, errors, etc) to their total number of at-bats. I am assuming that the number of walks and errors is randomly distributed among all-types of batters, and that if LH batters had a higher OBP it is because they are more likely to beat out the throw to 1st.Finding no correlation would support my hypothesis. If LH hitters hit better off of RH pitchers(RHP), we'd expect them to have a higher BA(ratio of hits/ At-bats) off of RHP than LHP.Finding a positive correlation in this variable would prove my hypothesis. Finally, if LHH were less likely to be a victim of a double play, they would have a higher BA and/or SLG( ratio between #of At-Bats where they get a double or more/ #total At-Bats) with a runner on 1st and less than 2 outs than RHH. Finding a positive correlation between LHH and BA with runner on 1st and 2 outs would support my hypothesis. No correlation between any of the 3 focuses of study or a negative correlation would disprove my hypothesis. 
+------------------------------------------------------------------------
 
----
-
-## Data Visulization of Aaron Judge's baseball stats 
+## Data Visulization of Aaron Judge's baseball stats
 
 ```{r Load, echo =  FALSE}
 # You can install using the pacman package using the following code:
@@ -33,6 +31,7 @@ if (!requireNamespace('pacman', quietly = TRUE)){
 pacman::p_load_current_gh("BillPetti/baseballr")
 
 ```
+
 ```{r, echo =FALSE}
 library(baseballr)
 library(tidyverse)
@@ -41,15 +40,12 @@ library(zoo)
 
 ```
 
-
 ```{r, echo=FALSE}
 #Finding his mlb ID
 judge_id <- playerid_lookup("Judge") |>
   filter(first_name == "Aaron") |>
   select(mlbam_id, first_name, last_name)
 ```
-
-
 
 ```{r, echo = FALSE}
 ##scrape Judges’ Statcast data, by pitch removing those with a batted ball speed of 0
@@ -83,9 +79,7 @@ judge_grpd <- judge |>
 
 ```
 
-
 This is the average launch speed and launch angle of Aaron Judge in the year 2016 and 2017.
-
 
 ```{r, echo = FALSE}
 ##Calculating Judges average launch angle and batted ball speed by year 
@@ -98,16 +92,8 @@ judge_avg_speed_yr <- judge |>
 knitr::kable(judge_avg_speed_yr, col.names = c("Year", "Launch Speed", "Launch Angle"))
 ```
 
+You can see the distribution of that the launch speed and angles of his swings in the graph below and how it changed over time.
 
-
-
-
-
- You can see the distribution of that the launch speed and angles of his swings in the graph below and how it changed over time.
- 
- 
- 
- 
 ```{r plot, echo = FALSE }
 judge_grpd |>
   ggplot(aes(game_date, value)) +
@@ -126,8 +112,6 @@ judge_grpd |>
 
 
 ```
-
-
 ```{r, eval = FALSE, echo =FALSE}
 
 """
@@ -167,4 +151,3 @@ bref_daily_pitcher(
 
 """
 ```
-
