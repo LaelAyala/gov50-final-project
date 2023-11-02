@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/plot-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1472,7 +1472,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="index_files/header-attrs-2.24/header-attrs.js"></script>
+  <script src="index_files/header-attrs-2.25/header-attrs.js"></script>
   <script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="index_files/popper-2.6.0/popper.min.js"></script>
   <link href="index_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1523,6 +1523,54 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h2 id="proposal">Proposal</h2>
 <p>To what extent are left-handed batters more effective than right handed batters in MLB? Left-handed batters are believed to have 3 big advantages. 1. Because they are closer to 1st base, it is easier for them to out run ground balls and be safe. 2. A majority of MLB pitchers are right handed, and left-handed batters supposedly hit better off of right-handed pitchers. 3. With a runner on first and the second-basemen shifting closer to 2nd to get a double play, it is easier for a left-handed batter to pull the ball in-between the first and second baseman, and actually make it harder for the fielders to make a double play. My hypothesis is that left-handed hitters do not have a higher on-base percentage than right-handed hitters, but that they do hit better off of right-handed pitchers, and are less likely to have double plays made on them with a runner on 1st. I think that the closeness of the left-handed hitters (LHH) to 1st base is offset by the tendency for LH hitters to “pull” the ball to the second-baseman and they have to make a shorter throw. However, I do think that LH batters hit better off of RH pitchers as the ball is easier to hit if its breaking into you and other research studies have supported this. Finally, because hitters have the tendency to pull the ball, I do think the 2nd baseman has a harder time getting a double play from a LH hitter, and thus there will be less double plays with LH hitters.Therefore LH hitters will be somewhat more effective than RH hitters.</p>
 <p>The dataset I am going to use is Baseballr is an R package than can be used to analyze baseball data. Baseballr has scaped data from various sources and created an R package so it can easily be used. This data includes box scores, standings, sabermetrics, etc. My explanatory variables of interest are the handedness of batter, Left-handed vs Right-handed, and comparing the metrics between the two groups. My outcome/dependent variables are On-base percentage(OBP), Batting Averages(BA), and slugging percentage(SLG). On Base Percentage is the ratio of that the hitter gets on base(via walks, hits, errors, etc) to their total number of at-bats. I am assuming that the number of walks and errors is randomly distributed among all-types of batters, and that if LH batters had a higher OBP it is because they are more likely to beat out the throw to 1st.Finding no correlation would support my hypothesis. If LH hitters hit better off of RH pitchers(RHP), we’d expect them to have a higher BA(ratio of hits/ At-bats) off of RHP than LHP.Finding a positive correlation in this variable would prove my hypothesis. Finally, if LHH were less likely to be a victim of a double play, they would have a higher BA and/or SLG( ratio between #of At-Bats where they get a double or more/ #total At-Bats) with a runner on 1st and less than 2 outs than RHH. Finding a positive correlation between LHH and BA with runner on 1st and 2 outs would support my hypothesis. No correlation between any of the 3 focuses of study or a negative correlation would disprove my hypothesis.</p>
+<hr />
+<h2 id="data-visulization-of-aaron-judges-baseball-stats">Data Visulization of Aaron Judge’s baseball stats</h2>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>This is the average launch speed and launch angle of Aaron Judge in the year 2016 and 2017.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Year</th>
+<th style="text-align: right;">Launch Speed</th>
+<th style="text-align: right;">Launch Angle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2016</td>
+<td style="text-align: right;">95.1</td>
+<td style="text-align: right;">20.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2017</td>
+<td style="text-align: right;">94.8</td>
+<td style="text-align: right;">15.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You can see the distribution of that the launch speed and angles of his swings in the graph below and how it changed over time.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/plot-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

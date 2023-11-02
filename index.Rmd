@@ -21,7 +21,150 @@ To what extent are left-handed batters more effective than right handed batters 
 
 The dataset I am going to use is Baseballr is an R package than can be used to analyze baseball data. Baseballr has scaped data from various sources and created an R package so it can easily be used. This data includes box scores, standings, sabermetrics, etc. My explanatory variables of interest are the handedness of batter, Left-handed vs Right-handed, and comparing the metrics between the two groups. My outcome/dependent variables are On-base percentage(OBP), Batting Averages(BA),  and slugging percentage(SLG). On Base Percentage is the ratio of that the hitter gets on base(via walks, hits, errors, etc) to their total number of at-bats. I am assuming that the number of walks and errors is randomly distributed among all-types of batters, and that if LH batters had a higher OBP it is because they are more likely to beat out the throw to 1st.Finding no correlation would support my hypothesis. If LH hitters hit better off of RH pitchers(RHP), we'd expect them to have a higher BA(ratio of hits/ At-bats) off of RHP than LHP.Finding a positive correlation in this variable would prove my hypothesis. Finally, if LHH were less likely to be a victim of a double play, they would have a higher BA and/or SLG( ratio between #of At-Bats where they get a double or more/ #total At-Bats) with a runner on 1st and less than 2 outs than RHH. Finding a positive correlation between LHH and BA with runner on 1st and 2 outs would support my hypothesis. No correlation between any of the 3 focuses of study or a negative correlation would disprove my hypothesis. 
 
+---
+
+## Data Visulization of Aaron Judge's baseball stats 
+
+```{r Load, echo =  FALSE}
+# You can install using the pacman package using the following code:
+if (!requireNamespace('pacman', quietly = TRUE)){
+  install.packages('pacman')
+}
+pacman::p_load_current_gh("BillPetti/baseballr")
+
+```
+```{r, echo =FALSE}
+library(baseballr)
+library(tidyverse)
+library(reshape2)
+library(zoo)
+
+```
+
+
+```{r, echo=FALSE}
+#Finding his mlb ID
+judge_id <- playerid_lookup("Judge") |>
+  filter(first_name == "Aaron") |>
+  select(mlbam_id, first_name, last_name)
+```
 
 
 
+```{r, echo = FALSE}
+##scrape Judges’ Statcast data, by pitch removing those with a batted ball speed of 0
+
+judge_17 <- statcast_search("2017-03-31", "2017-10-31", playerid = judge_id[1,1], player_type = 'batter') 
+          
+judge_16 <- statcast_search("2016-03-31", "2016-10-31", playerid = judge_id[1,1], player_type = 'batter') 
+
+
+
+judge <- bind_rows(judge_16, judge_17)|>
+  mutate(Year = as.factor(substr(game_date,1,4))) |>
+  filter(type == "X") |>
+  filter(launch_speed != 0)
+
+
+
+```
+
+```{r, echo = FALSE}
+##Taking the average launch angle and batted ball speed by GAME
+judge_grpd <- judge |>
+  group_by(game_date)|>
+  summarise(
+    `Average Launch Angle` = mean(launch_angle, na.rm = TRUE), 
+    `Average Batted Ball Speed` = mean(launch_speed, na.rm = TRUE))|>
+  ungroup() |>
+  melt(id=c("game_date"))|>
+  mutate(Year = as.factor(substr(game_date,1,4)))
+
+
+```
+
+
+This is the average launch speed and launch angle of Aaron Judge in the year 2016 and 2017.
+
+
+```{r, echo = FALSE}
+##Calculating Judges average launch angle and batted ball speed by year 
+judge_avg_speed_yr <- judge |>
+  group_by(Year) |>
+  summarize(
+    speed = round(mean(launch_speed, na.rm = TRUE),1), 
+    angle = round(mean(launch_angle, na.rm = TRUE),1))
+
+knitr::kable(judge_avg_speed_yr, col.names = c("Year", "Launch Speed", "Launch Angle"))
+```
+
+
+
+
+
+
+ You can see the distribution of that the launch speed and angles of his swings in the graph below and how it changed over time.
+ 
+ 
+ 
+ 
+```{r plot, echo = FALSE }
+judge_grpd |>
+  ggplot(aes(game_date, value)) +
+  geom_point() +
+  stat_smooth(aes(group = Year, color = Year)) +
+  facet_wrap(~variable, scales = "free_y") + 
+  ggtitle("\n Aaron Judge: 2016 vs. 2017\n") + 
+  labs(subtitle = paste0("Judge has lowered his launch angle in 2017, from ", judge_avg_speed_yr[1,3], " degrees in 2016 to ", judge_avg_speed_yr[2,3], " degrees in 2017.\n\n"), 
+       caption = "@BillPetti\nData from baseballsavant.mlb.com\nData acquired with the baseballr package") +
+  ylab("Angle = Degrees, Speed = MPH\n") +
+  xlab("\nDate") +
+  #theme_bp_grey() + 
+  theme(legend.position = "bottom", strip.text.x = element_text(face = "bold", size = 14), plot.subtitle = element_text(hjust=-.12)) +
+  scale_color_manual(values = c("#5F9ED1", "#FF800E"))
+
+
+
+```
+
+
+```{r, eval = FALSE, echo =FALSE}
+
+"""
+bref_standings_on_date(date,division, from = FALSE) #ant to see the standings for a specific MLB division on a given date, you can use the bref_standings_on_date() function. Just pass the year, month, day, and division you want:
+
+#You can also pull data for all hitters over a specific date range. Here are the results for all hitters from August 1st through October 3rd during the 2015 season:
+
+data <- bref_daily_batter(date, date) 
+data %>%
+  dplyr::glimpse()
+
+team_consistency(2015). In terms of metric calculation, the package allows the user to calculate the consistency of team scoring and run prevention for any year using team_consistency():
+
+You can also calculate wOBA per plate appearance and wOBA on contact for any set of data over any date range, provided you have the data available.
+
+Simply pass the proper data frame to woba_plus:
+
+PA = plate appearance 
+wOBA_CON = weighted on base average of contact 
+
+ Fielding Independent Pitching. It is a statistic meant to measure a pitcher's effectiveness, taking plays that would involve the defense trying to field the ball out of the equation
+While all plate appearances contribute towards ERA, FIP only looks at strikeouts, walks, hit batsmen, and home runs. The latter has actually been found to hold more predictive power when trying to predict future ERA than past ERA itself
+
+data %>%
+  dplyr::filter(PA > 200) %>%
+  woba_plus %>%
+  dplyr::arrange(desc(wOBA)) %>%
+  dplyr::select(Name, Team, season, PA, wOBA, wOBA_CON) %>%
+  dplyr::glimpse()
+
+You can also generate these wOBA-based stats, as well as FIP, for pitchers using the fip_plus() function:
+bref_daily_pitcher(
+  fip_plus() %>% 
+  dplyr::select(season, Name, IP, ERA, SO, uBB, HBP, HR, FIP, wOBA_against, wOBA_CON_against) %>%
+  dplyr::arrange(dplyr::desc(IP)) %>% 
+  head(10)
+
+"""
+```
 
