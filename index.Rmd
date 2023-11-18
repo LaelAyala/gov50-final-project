@@ -151,3 +151,94 @@ bref_daily_pitcher(
 
 """
 ```
+
+---------------------------------------------------------------------------------------------------
+
+## Data Analysis 
+
+
+```{r, echo = FALSE}
+stats_2017 <- try(mlb_stats(stat_type = 'season', stat_group = 'hitting', season = 2017))|>
+  rename(player_name = player_full_name)
+
+ids <- stats_2017|>
+         select(player_id)
+
+
+
+
+```
+
+
+
+
+```{r,echo = FALSE}
+
+
+
+stands<- statcast_search("2017-03-31", "2017-10-31", playerid = NULL, player_type = 'batter')|>
+  select(batter,stand)|>
+  rename(player_id=batter)
+  
+  
+
+
+
+
+stand<-unique(stands)
+
+stand<-na.omit(stand)
+
+
+
+```
+
+
+
+
+```{r,echo = FALSE}
+
+
+stats_2017 <- stats_2017 |>
+  left_join(stand,by = "player_id")
+
+
+stats_2017<-na.omit(stats_2017)
+
+
+
+```
+
+
+
+ Average On Base Percentage for LH hitters and RH hitters in the year of 2017
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+```{r, echo = FALSE}
+obp_chart <- stats_2017|>
+  group_by(stand)|>
+  summarize(obp_mean = mean(as.numeric(obp))) |>
+  pivot_wider(
+    names_from = stand,
+    values_from = obp_mean
+  )
+  
+
+
+
+
+ knitr::kable(obp_chart, col.names = c("Left Handed Hitters", "Right-Handed Hitters"))
+
+```
+
+As you can see by this table, there is very little difference in the average on base percentages for Left Handed Hitters(LH) and Right Handed Hitters(RH). This supports my hypothesis that left handed hitters do not have a higher on-base percentage than right handed hitters. Many baseball coaches conject that  left handed hitters have an advantage because they are closer to first base and have a better chance at beating the throw to first. If this were true, then we would expect left handed hitters to get on base more and have a higher on-base percentage(OBP). However, this is not the case as LH hitters have almost identical OBPs to RH hitters. This is likely because the bases are 90ft apart, and such a far distance makes any advantage a LH hitter has to beat the throw to first negligible. The results might be different for a sport like softball in which the bases are 60ft apart and an LH hitter's advantage may be significant, but for baseball it is not.
+
+P.S. I'M aware this is a very simple data analysis but it took me 3 hrs to figure out how to merge all the datasets so please be nice 
