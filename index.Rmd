@@ -20,10 +20,10 @@ The dataset I am going to use is Baseballr is an R package than can be used to a
 Data section: 2-3 paragraphs + plot visualizing main outcome of interest. (3pts)
 
 ```{r Load, echo =  FALSE}
-# You can install using the pacman package using the following code:
+#You can install using the pacman package using the following code
 if (!requireNamespace('pacman', quietly = TRUE)){
-  install.packages('pacman')
-}
+  install.packages('pacman')}
+
 pacman::p_load_current_gh("BillPetti/baseballr")
 
 ```
@@ -243,6 +243,7 @@ On the other hand, there does seem to be a larger difference the number of doubl
 
 ---------------------------------------------------------------------------------------------------
 
+---------------------------------------------------------------------------------------------------
 ## RESULTS
 Results section: plot of main analysis + regression output + 2-3 paragraphs of description and interpretation of the plots and regression (including interpreting the main coefficient of interest and describing if it is statistically significant and if we should interpret it causally). This section could be longer if you choose to include additional analyses. (8pts)
 
@@ -376,7 +377,7 @@ ate_pitcher <-batter_db |>
   )|>
   select(p_throws.x,ATE)
 
-knitr::kable(ate_pitcher, col.names = c("Pitcher Handedness", "ATE"))
+knitr::kable(ate_pitcher, col.names = c("Pitcher Handedness", "ATE(Average Treatment Effect)"))
 
 
 
@@ -442,7 +443,7 @@ Based on the confidence interval containing 0 and the p-value of .291, there is 
  
  
 
-Finally, if LHH were less likely to be a victim of a double play, they would have a higher BA with a runner on 1st and less than 2 outs than RHH. Finding a positive correlation between LHH and BA with runner on 1st and less than 2 outs would support my hypothesis. No correlation between any of the 3 focuses of study or a negative correlation would disprove my hypothesis.
+Finally, if LHH were less likely to be a victim of a double play, they would have less instances of hitting a ground ball into a double play than RHH. Finding a negative relationship between LHH and double plays would support my hypothesis. No correlation between any of the 3 focuses of study or a positive correlation would disprove my hypothesis.
 
 ```{r double plays}
 double_play <-stats_2017_na|>
@@ -453,13 +454,19 @@ double_play <-stats_2017_na|>
     values_from = db_mean
   )
 
-knitr::kable(double_play, col.names = c("LHH","RHH"))
+knitr::kable(double_play, col.names = c("LHH","RHH"), caption = "Avg # of times grounded out into a double play in a season")
 
 
 
 ```
 
+
+
+
+
 BOOTSTRAPPING TO DETERNMINE SIGNIFICANT DIFFERENCE
+
+
 
 
 
@@ -494,12 +501,16 @@ null_dbstat <- stats_2017_na |>
 dbstat_ci_99 <- ate_boots_dbstat|>
   get_confidence_interval(level = .99, type = "percentile")
 
-dbstat_ci_99
+knitr::kable(dbstat_ci_99)
+
+
   
 p_dbstat<- null_dbstat |>
 get_p_value(obs_stat = ate_dbstat, direction = "left")
 
-p_dbstat
+knitr::kable(p_dbstat)
+
+
 
 ate_boots_dbstat|>
   visualize()
@@ -579,7 +590,7 @@ modelsummary::modelsummary(fit_obp,
   
 ```
 
-When running a regression to examine whether there is a significant difference between the on base percentages of LH hitters and RH hitters there is evidence that there is no significant difference. On average, a right handed hitter has an on-base percentage .002 points higher that a LH hitter, but that difference is not statistically significant as the p-value is .783.
+When running a regression to examine whether there is a significant difference between the on base percentages of LH hitters and RH hitters there is evidence that there is no significant difference. On average, a right handed hitter has an on-base percentage .001 points higher that a LH hitter, but that difference is not statistically significant as the p-value is .869. I controlled for plate appearances here because the more at bats a person gets the more likely they will get on base. 
 
 
 
@@ -606,15 +617,17 @@ modelsummary::modelsummary(fit_dbplay,
 
 ```
  
-In order to better determine whether the results were statistically significant I controlled for plate appearances and caught stealing.A player’s speed could be a confounding variable as the faster a player is the less likely they are to ground out into a double play. Unfortunately, a players speed is not in this database, so I had to approximate using stolen bases as a player's speed heavily influences how many bases a player steals in a season. It is interesting that even when controlling for these variables the results were still statistically significant and, on average,left handed hitters grounded into less double plays than right handed hitters. Even though there is enough evidence to reject the null hypothesis, we still cannot assume causality. Causality can only be proven through an experiment not an observational study. 
+Based on this regression, when controlling for stolen bases, the average number of times a left handed batter grounded into a double play in one season is 12.4. RH hitters ground into a double play 2 more times more than LH hitters on average. In order to better determine whether the results were statistically significant I controlled for bases stolen.A player’s speed could be a confounding variable as the faster a player is the less likely they are to ground out into a double play. Unfortunately, a players speed is not in this database, so I had to approximate using stolen bases as a player's speed heavily influences how many bases a player steals in a season. It is interesting that even when controlling for these variables the results were still statistically significant and, on average,left handed hitters grounded into less double plays than right handed hitters. Even though there is enough evidence to reject the null hypothesis, we still cannot assume causality. Causality can only be proven through a controlled experiment not an observational study. There are still many variables other than stance that may incluence the results such as plate appearances and experience of the player.
 
 
----------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------
 ## CONCLUSION
 
-To summarize, the differences in average  on base percentages between Left Handed hitters(LH) and right handed hitters is not significantly different, and in fact RH hitters have a slightly higher OBP than LH hitters. This supports my hypothesis that there is no significant difference in the mean OBP most likely because the bases in baseball are 90 ft apart which is far enough to make the advantage of LH hitters having an extra step to the base negligible. Additionally, there were no significant differences in the mean batting averages of LH hitters and RH hitters when hitting against a RH Pitcher. This does not support my hypothesis and actually debunks the belief that LH hitters have an advantage because they hit better off of RH pitchers and most pitchers in the MLB are right handed. While the average batting average for LH hitters off of RH pitchers is a little higher, giving some merit to this belief, ultimately the difference is not statistically significant. Finally, on average, LH hitters grounded out into a double play less than RH hitters. Also, the difference in the average number of times an LH batter vs a RH batter grounds out into a double play is statistically significant with a p- value less than .01. This gives us evidence to reject the null hypothesis that there are no difference in means and supports my hypothesis that being closer to first base makes a difference on not grounding out into a double play. The limitations of this analysis are that the data is only from the 2017 season. Though I tried to estimate the average difference in means in other seasons through bootstrapping, it is less accurate because I only used  one sample. On a similar note, having baseball statistics in r is a fairly new technology and there aren’t usable datasets before 2014. It is possible that including statistics from more seasons might change the results of the study. As previously mentioned, some confounding variables that may threaten the inference are the speed and experience of the player. If the player is faster, they might have a significantly higher OBP and/or ground into less double plays. A player's experience(seasons played in the MLB)  may also be a confounding variable as rookie batters may perform less than veterans. Also, over time  players  may get better and consequently have better batting averages and OBPs the more years they have been playing in the league and facing the same pitchers. To improve my analysis, I would use statistics from multiple seasons and also merge the dataset with a dataset that contains the speeds and experience of all the players. Having a larger sample size  would increase the reliability of my analysis to generalize to the population. Also by merging the datasets I could control those variables and/or examine the relationship between them.  
+To summarize, the differences in average  on base percentages between Left Handed hitters(LH) and right handed hitters is not significantly different, and in fact RH hitters have a slightly higher OBP than LH hitters. This supports my hypothesis that there is no significant difference in the mean OBP most likely because the bases in baseball are 90 ft apart which is far enough to make the advantage of LH hitters having an extra step to the base negligible. Additionally, there were no significant differences in the mean batting averages of LH hitters and RH hitters when hitting against a RH Pitcher. This does not support my hypothesis and actually debunks the belief that LH hitters have an advantage because they hit better off of RH pitchers and most pitchers in the MLB are right handed. While the average batting average for LH hitters off of RH pitchers is a little higher, giving some merit to this belief, ultimately the difference is not statistically significant. Finally, on average, LH hitters grounded out into a double play less than RH hitters. Also, the difference in the average number of times an LH batter vs a RH batter grounds out into a double play is statistically significant with a p- value less than .01. This gives us evidence to reject the null hypothesis that there are no difference in means and supports my hypothesis that being closer to first base makes a difference on not grounding out into a double play. Overall, LH hitters are not more effective than RH hitters as their OBP and BA are very similiar. The limitations of this analysis are that the data is only from the 2017 season. Though I tried to estimate the average difference in means in other seasons through bootstrapping, it is less accurate because I only used  one sample. On a similar note, having baseball statistics in r is a fairly new technology and there aren’t usable datasets before 2014. It is possible that including statistics from more seasons might change the results of the study. As previously mentioned, some confounding variables that may threaten the inference are the speed and experience of the player. If the player is faster, they might have a significantly higher OBP and/or ground into less double plays. A player's experience(seasons played in the MLB)  may also be a confounding variable as rookie batters may perform less than veterans. Also, over time  players  may get better and consequently have better batting averages and OBPs the more years they have been playing in the league and facing the same pitchers. To improve my analysis, I would use statistics from multiple seasons and also merge the dataset with a dataset that contains the speeds and experience of all the players. Having a larger sample size  would increase the reliability of my analysis to generalize to the population. Also by merging the data sets I could control those variables and/or examine the relationship between them.  
 
-
+------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
 FINAL PROJECT RUBRIC 
 
