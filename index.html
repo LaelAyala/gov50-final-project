@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/plot-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/BA_means-1.png","index_files/figure-html5/boots_pitcher-1.png","index_files/figure-html5/db_play_bar-1.png","index_files/figure-html5/dbplay-1.png","index_files/figure-html5/dbplay-2.png","index_files/figure-html5/obp_means-1.png","index_files/figure-html5/obp_significance-1.png","index_files/figure-html5/plot-1.png","index_files/figure-html5/side_plot-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1473,6 +1473,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="index_files/header-attrs-2.25/header-attrs.js"></script>
+  <script src="index_files/kePrint-0.0.1/kePrint.js"></script>
+  <link href="index_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="index_files/popper-2.6.0/popper.min.js"></script>
   <link href="index_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1517,14 +1519,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="project-thoughts">Project thoughts</h2>
-<p>I am interested in exploring data related to sports analytics particularly related to hitting stats and batspeeds in softball. Some research questions are does grunting improve batspeed and power in softball swings? I can also look at professional baseball statistics and find out whether having a modified defense( where the fielders all shift to one side of the field) actually works better than a normal defense. These are just some initial questions, but I will ponder more later.</p>
-<hr />
-<h2 id="proposal">Proposal</h2>
+<h2 id="introduction">INTRODUCTION</h2>
 <p>To what extent are left-handed batters more effective than right handed batters in MLB? Left-handed batters are believed to have 3 big advantages. 1. Because they are closer to 1st base, it is easier for them to out run ground balls and be safe. 2. A majority of MLB pitchers are right handed, and left-handed batters supposedly hit better off of right-handed pitchers. 3. With a runner on first and the second-basemen shifting closer to 2nd to get a double play, it is easier for a left-handed batter to pull the ball in-between the first and second baseman, and actually make it harder for the fielders to make a double play. My hypothesis is that left-handed hitters do not have a higher on-base percentage than right-handed hitters, but that they do hit better off of right-handed pitchers, and are less likely to have double plays made on them with a runner on 1st. I think that the closeness of the left-handed hitters (LHH) to 1st base is offset by the tendency for LH hitters to “pull” the ball to the second-baseman and they have to make a shorter throw. However, I do think that LH batters hit better off of RH pitchers as the ball is easier to hit if its breaking into you and other research studies have supported this. Finally, because hitters have the tendency to pull the ball, I do think the 2nd baseman has a harder time getting a double play from a LH hitter, and thus there will be less double plays with LH hitters.Therefore LH hitters will be somewhat more effective than RH hitters.</p>
-<p>The dataset I am going to use is Baseballr is an R package than can be used to analyze baseball data. Baseballr has scaped data from various sources and created an R package so it can easily be used. This data includes box scores, standings, sabermetrics, etc. My explanatory variables of interest are the handedness of batter, Left-handed vs Right-handed, and comparing the metrics between the two groups. My outcome/dependent variables are On-base percentage(OBP), Batting Averages(BA), and slugging percentage(SLG). On Base Percentage is the ratio of that the hitter gets on base(via walks, hits, errors, etc) to their total number of at-bats. I am assuming that the number of walks and errors is randomly distributed among all-types of batters, and that if LH batters had a higher OBP it is because they are more likely to beat out the throw to 1st.Finding no correlation would support my hypothesis. If LH hitters hit better off of RH pitchers(RHP), we’d expect them to have a higher BA(ratio of hits/ At-bats) off of RHP than LHP.Finding a positive correlation in this variable would prove my hypothesis. Finally, if LHH were less likely to be a victim of a double play, they would have a higher BA and/or SLG( ratio between #of At-Bats where they get a double or more/ #total At-Bats) with a runner on 1st and less than 2 outs than RHH. Finding a positive correlation between LHH and BA with runner on 1st and 2 outs would support my hypothesis. No correlation between any of the 3 focuses of study or a negative correlation would disprove my hypothesis.</p>
+<p>The dataset I am going to use is Baseballr is an R package than can be used to analyze baseball data. Baseballr has scaped data from various sources and created an R package so it can easily be used. This data includes box scores, standings, sabermetrics, etc. My explanatory variables of interest are the handedness of batter, Left-handed vs Right-handed, and comparing the metrics between the two groups. My outcome/dependent variables are On-base percentage(OBP), Batting Averages(BA), and the number of times they grounded out into a double play. On Base Percentage is the ratio of that the hitter gets on base(via walks, hits, errors, etc) to their total number of at-bats. I am assuming that the number of walks and errors is randomly distributed among all-types of batters, and that if LH batters had a higher OBP it is because they are more likely to beat out the throw to 1st.Finding no correlation would support my hypothesis. If LH hitters hit better off of RH pitchers(RHP), we’d expect them to have a higher BA(ratio of hits/ At-bats) off of RHP than LHP.Finding a positive correlation in this variable would prove my hypothesis. Finally, if LHH were less likely to be a victim of a double play, they would have less double plays made on them than RHH. Finding a negative relationship between LHH and ground into double plays statistic would support my hypothesis.No correlation between any of the 3 focuses of study or a negative correlation would disprove my hypothesis.</p>
 <hr />
-<h2 id="data-visulization-of-aaron-judges-baseball-stats">Data Visulization of Aaron Judge’s baseball stats</h2>
+<h2 id="data-visualization-for-batting-averages-and-on-base-percentage-for-left-handed-hitters-and-right-handed-hitters">DATA VISUALIZATION FOR BATTING AVERAGES AND ON BASE PERCENTAGE FOR LEFT HANDED HITTERS AND RIGHT HANDED HITTERS</h2>
+<p>Data section: 2-3 paragraphs + plot visualizing main outcome of interest. (3pts)</p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
@@ -1534,54 +1534,175 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
+<p>I had to merge categorical player specific data such as stance to the 2017 stats dataset.</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#stats is a dataset containg all of a hitters statistics during the 2017 season</span></span>
+<span><span class='va'>stats_2017</span> <span class='op'>&lt;-</span> <span class='kw'><a href='https://rdrr.io/r/base/try.html'>try</a></span><span class='op'>(</span><span class='fu'>mlb_stats</span><span class='op'>(</span>stat_type <span class='op'>=</span> <span class='st'>'season'</span>, stat_group <span class='op'>=</span> <span class='st'>'hitting'</span>, season <span class='op'>=</span> <span class='fl'>2017</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>rename</span><span class='op'>(</span>player_name <span class='op'>=</span> <span class='va'>player_full_name</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>ids</span> <span class='op'>&lt;-</span> <span class='va'>stats_2017</span><span class='op'>|&gt;</span></span>
+<span>         <span class='fu'>select</span><span class='op'>(</span><span class='va'>player_id</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'>#this searches through all of the hitters and finds whether they are left handed or right handed through game by game </span></span>
+<span><span class='va'>stands</span><span class='op'>&lt;-</span> <span class='fu'>statcast_search</span><span class='op'>(</span><span class='st'>"2017-03-31"</span>, <span class='st'>"2017-10-31"</span>, playerid <span class='op'>=</span> <span class='cn'>NULL</span>, player_type <span class='op'>=</span> <span class='st'>'batter'</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>batter</span>,<span class='va'>stand</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>rename</span><span class='op'>(</span>player_id<span class='op'>=</span><span class='va'>batter</span><span class='op'>)</span></span>
+<span>  </span>
+<span><span class='co'>#need to rename batter to player_id so it can be merged with the 2017 dataset later</span></span>
+<span></span>
+<span><span class='co'>#because we have game by game data, we only need to count the stance of the player the first time they go up to bat that season and get rid of duplicates.   </span></span>
+<span><span class='va'>stand</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>stands</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>stand</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/stats/na.fail.html'>na.omit</a></span><span class='op'>(</span><span class='va'>stand</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class='co'>#adding whether or not the batter is left handed or right handed to the 2017 dataset</span></span>
+<span><span class='co'>#EVEN THOUGH THIS IS ONLY ONE CHUNK OF CODE IT TOOK ME 3 HOURS TO SHUFFLE THROUGH ALL AVAILABLE DATASETS AND FIGURE OUT HOW TO MERGE THEM! </span></span>
+<span></span>
+<span><span class='va'>stats_2017</span> <span class='op'>&lt;-</span> <span class='va'>stats_2017</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>stand</span>,by <span class='op'>=</span> <span class='st'>"player_id"</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span><span class='va'>stats_2017_na</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/stats/na.fail.html'>na.omit</a></span><span class='op'>(</span><span class='va'>stats_2017</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>stats_2017_na</span> <span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span><span class='op'>|&gt;</span></span>
+<span><span class='fu'>mutate</span><span class='op'>(</span></span>
+<span>  stand_numeric<span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>stand</span> <span class='op'>==</span> <span class='st'>"L"</span>,<span class='fl'>1</span>,<span class='fl'>0</span><span class='op'>)</span></span>
+<span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>stats_2017_na</span></span></code></pre>
+</div>
+<pre><code># A tibble: 154 × 61
+   total_splits season num_teams  rank games_played ground_outs
+          &lt;int&gt; &lt;chr&gt;      &lt;int&gt; &lt;int&gt;        &lt;int&gt;       &lt;int&gt;
+ 1          144 2017           1     1          153         160
+ 2          144 2017           1     2          159         149
+ 3          144 2017           1     3          136         136
+ 4          144 2017           1     4          144         109
+ 5          144 2017           1     5          130          97
+ 6          144 2017           1     6          162         145
+ 7          144 2017           1     7          140         140
+ 8          144 2017           1     8          162         206
+ 9          144 2017           1     9          152         154
+10          144 2017           1     9          152         154
+# ℹ 144 more rows
+# ℹ 55 more variables: air_outs &lt;int&gt;, runs &lt;int&gt;, doubles &lt;int&gt;,
+#   triples &lt;int&gt;, home_runs &lt;int&gt;, strike_outs &lt;int&gt;,
+#   base_on_balls &lt;int&gt;, intentional_walks &lt;int&gt;, hits &lt;int&gt;,
+#   hit_by_pitch &lt;int&gt;, avg &lt;chr&gt;, at_bats &lt;int&gt;, obp &lt;chr&gt;,
+#   slg &lt;chr&gt;, ops &lt;chr&gt;, caught_stealing &lt;int&gt;, stolen_bases &lt;int&gt;,
+#   stolen_base_percentage &lt;chr&gt;, ground_into_double_play &lt;int&gt;, …</code></pre>
+</div>
+<p>From there, I was able to create simple visualizations to give us a brief overview of the variables I will be examining.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>BA_means</span> <span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'>group_by</span><span class='op'>(</span><span class='va'>stand</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'>summarize</span><span class='op'>(</span>BA <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>avg</span><span class='op'>)</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>BA_means</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>stand</span>, y <span class='op'>=</span> <span class='va'>BA</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_col</span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'>aes</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>stand</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>geom_text</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>BA</span>,<span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>, fontface <span class='op'>=</span> <span class='st'>"bold"</span>, vjust <span class='op'>=</span> <span class='fl'>1.5</span>, position <span class='op'>=</span> <span class='fu'>position_dodge</span><span class='op'>(</span><span class='fl'>.9</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>+</span><span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Mean Batting Averages between Left and Right Handed Hitters"</span>, x <span class='op'>=</span> <span class='st'>"Batter Stance"</span>, y<span class='op'>=</span> <span class='st'>"Batting Average"</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/BA_means-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>obp_means</span> <span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'>group_by</span><span class='op'>(</span><span class='va'>stand</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'>summarize</span><span class='op'>(</span>obp <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>obp</span><span class='op'>)</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>obp_means</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>stand</span>, y <span class='op'>=</span> <span class='va'>obp</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_col</span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'>aes</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>stand</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>geom_text</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>obp</span>,<span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>, fontface <span class='op'>=</span> <span class='st'>"bold"</span>, vjust <span class='op'>=</span> <span class='fl'>1.5</span>, position <span class='op'>=</span> <span class='fu'>position_dodge</span><span class='op'>(</span><span class='fl'>.9</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>+</span><span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Mean On-base Percentage between Left and Right Handed Hitters"</span>, x <span class='op'>=</span> <span class='st'>"Batter Stance"</span>, y<span class='op'>=</span> <span class='st'>"On-base Percentage"</span><span class='op'>)</span></span></code></pre>
 </div>
-<p>This is the average launch speed and launch angle of Aaron Judge in the year 2016 and 2017.</p>
-<div class="layout-chunk" data-layout="l-body">
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Year</th>
-<th style="text-align: right;">Launch Speed</th>
-<th style="text-align: right;">Launch Angle</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">2016</td>
-<td style="text-align: right;">95.1</td>
-<td style="text-align: right;">20.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2017</td>
-<td style="text-align: right;">94.8</td>
-<td style="text-align: right;">15.5</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>You can see the distribution of that the launch speed and angles of his swings in the graph below and how it changed over time.</p>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="index_files/figure-html5/plot-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/obp_means-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>dbplay_means</span> <span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'>group_by</span><span class='op'>(</span><span class='va'>stand</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'>summarize</span><span class='op'>(</span>avg_dbplay <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ground_into_double_play</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>dbplay_means</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>stand</span>, y <span class='op'>=</span> <span class='va'>avg_dbplay</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_col</span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'>aes</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>stand</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span></span>
+<span>  <span class='fu'>geom_text</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>avg_dbplay</span>,<span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>, fontface <span class='op'>=</span> <span class='st'>"bold"</span>, vjust <span class='op'>=</span> <span class='fl'>1.5</span>, position <span class='op'>=</span> <span class='fu'>position_dodge</span><span class='op'>(</span><span class='fl'>.9</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>+</span><span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Average number of grounded into double plays for LH and RH  Batters in 2017"</span>, x <span class='op'>=</span> <span class='st'>"Batter Stance"</span>, y<span class='op'>=</span> <span class='st'>"Number of double plays"</span><span class='op'>)</span></span></code></pre>
 </div>
+<p><img src="index_files/figure-html5/db_play_bar-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#now we need to merge yet another dataset, this time we are merging categorical data about the pitcher(whether they are left handed or right handed and adding that to the game by game-dataset)</span></span>
+<span></span>
+<span><span class='co'># a table of all pitchers  and whether they threw left handed or right handed </span></span>
+<span><span class='va'>throws</span> <span class='op'>&lt;-</span> <span class='fu'>statcast_search</span><span class='op'>(</span><span class='st'>"2017-03-31"</span>, <span class='st'>"2017-10-31"</span>, playerid <span class='op'>=</span> <span class='cn'>NULL</span>, player_type <span class='op'>=</span> <span class='st'>'pitcher'</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>pitcher</span>,<span class='va'>p_throws</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>rename</span><span class='op'>(</span>pitcher_1<span class='op'>=</span><span class='va'>pitcher</span><span class='op'>)</span></span>
+<span>  </span>
+<span></span>
+<span><span class='va'>throws</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>throws</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>throws</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/stats/na.fail.html'>na.omit</a></span><span class='op'>(</span><span class='va'>throws</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span><span class='co'>#game by game database of all batters for the 2017 season </span></span>
+<span><span class='va'>batter_db</span> <span class='op'>&lt;-</span> <span class='fu'>statcast_search</span><span class='op'>(</span><span class='st'>"2017-03-31"</span>, <span class='st'>"2017-10-31"</span>, playerid <span class='op'>=</span> <span class='cn'>NULL</span>, player_type <span class='op'>=</span> <span class='st'>'batter'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'>#merging database based on pitcher. so now it notes whether the pitcher the batter faced was left handed or right </span></span>
+<span><span class='va'>batter_db</span><span class='op'>&lt;-</span> <span class='va'>batter_db</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>throws</span>,by <span class='op'>=</span> <span class='st'>"pitcher_1"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'>#Need to find the batting averages of each player. unfortunately there is no Batting average in this dataset so we need to calculate that ourselves by creating a new binary variable called hit and calculating the average of that</span></span>
+<span></span>
+<span><span class='va'>BA_table</span> <span class='op'>&lt;-</span> <span class='va'>batter_db</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>events</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"walk"</span>,<span class='st'>"hit_by_pitch"</span>,<span class='st'>""</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>mutate</span> <span class='op'>(</span></span>
+<span>    hit <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>events</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"single"</span>,<span class='st'>"double"</span>,<span class='st'>"triple"</span>,<span class='st'>"home_run"</span><span class='op'>)</span>,<span class='fl'>1</span>,<span class='fl'>0</span><span class='op'>)</span></span>
+<span>    <span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>stand</span>,<span class='va'>p_throws.x</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>summarize</span><span class='op'>(</span>BA_hand <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>hit</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>pivot_wider</span><span class='op'>(</span></span>
+<span>  names_from <span class='op'>=</span> <span class='va'>p_throws.x</span>,</span>
+<span>  values_from <span class='op'>=</span> <span class='va'>BA_hand</span></span>
+<span>    </span>
+<span>  <span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>pitcher_means</span> <span class='op'>&lt;-</span> <span class='va'>batter_db</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>events</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"walk"</span>,<span class='st'>"hit_by_pitch"</span>,<span class='st'>""</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>mutate</span> <span class='op'>(</span></span>
+<span>    hit <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>events</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"single"</span>,<span class='st'>"double"</span>,<span class='st'>"triple"</span>,<span class='st'>"home_run"</span><span class='op'>)</span>,<span class='fl'>1</span>,<span class='fl'>0</span><span class='op'>)</span></span>
+<span>    <span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>stand</span>,<span class='va'>p_throws.x</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>summarize</span><span class='op'>(</span>BA_hand <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>hit</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span><span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pitcher_means</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>p_throws.x</span>, y <span class='op'>=</span> <span class='va'>BA_hand</span>, fill <span class='op'>=</span> <span class='va'>stand</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_col</span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"identity"</span>, position <span class='op'>=</span> <span class='fu'>position_dodge</span><span class='op'>(</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.75</span><span class='op'>)</span>  <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_text</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>BA_hand</span>,<span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>, fontface <span class='op'>=</span> <span class='st'>"bold"</span>, vjust <span class='op'>=</span> <span class='fl'>1.5</span>, position <span class='op'>=</span> <span class='fu'>position_dodge</span><span class='op'>(</span><span class='fl'>.9</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"\n Pitcher Handedness"</span>, y <span class='op'>=</span> <span class='st'>"Batting Average\n"</span>, title <span class='op'>=</span> <span class='st'>"\n Batting Average for Left and Right Handed Batters off of Left and Right Handed Pitchers \n"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span>plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>hjust <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>, </span>
+<span>        axis.title.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>face<span class='op'>=</span><span class='st'>"bold"</span>, colour<span class='op'>=</span><span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>,</span>
+<span>        axis.title.y <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>face<span class='op'>=</span><span class='st'>"bold"</span>, colour<span class='op'>=</span><span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>,</span>
+<span>        legend.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>face<span class='op'>=</span><span class='st'>"bold"</span>, size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/side_plot-1.png" width="624" /></p>
+</div>
+<p>Through creating bar plots, we can have a basic understanding of how on-base percentage, batting average, and ground into double play rates compare for left handed and right handed batters. Upon first glance, there does not seem to be a significant difference in the batting averages or on-base percentages of Left and Right handed hitters. However, we cannot determine this from the bar plot alone.In order to statistically confirm that there is no significant difference we need to create bootstrap samples and calculate a p-value which I do in the results section. Even though we need to do evaluate the p-values in order to confirm, based on these bar plots alone, I do not predict there to be any significant difference in the batting averages and on-base percentages of left handed and right handed batters.</p>
+<p>On the other hand, there does seem to be a larger difference the number of double plays made on LH hitters vs RH hitters. Based on the bar plot, on average, LH hitters ground into less double plays than RH hitters. Once again, we cannot yet determine if there is a significant difference in the average number of double plays without calculating a confidence interval or a p-value, however it is more possible that LH hitters have an advantage over RH hitters in this regard. Similarly, there does seem to be a greater difference in the batting averages of LH hitters and RH hitters when facing a right-handed pitcher. Thus, there may be some merit to the claim that LH hitters hit better off of RH pitchers than RH batters. We need to calculate a p-value to determine if these differences are significant.</p>
 <hr />
-<h2 id="data-analysis">Data Analysis</h2>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
+<h2 id="results">RESULTS</h2>
+<p>Results section: plot of main analysis + regression output + 2-3 paragraphs of description and interpretation of the plots and regression (including interpreting the main coefficient of interest and describing if it is statistically significant and if we should interpret it causally). This section could be longer if you choose to include additional analyses. (8pts)</p>
 <p>Average On Base Percentage for LH hitters and RH hitters in the year of 2017</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
@@ -1599,9 +1720,715 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tbody>
 </table>
 </div>
-<p>As you can see by this table, there is very little difference in the average on base percentages for Left Handed Hitters(LH) and Right Handed Hitters(RH). This supports my hypothesis that left handed hitters do not have a higher on-base percentage than right handed hitters. Many baseball coaches conject that left handed hitters have an advantage because they are closer to first base and have a better chance at beating the throw to first. If this were true, then we would expect left handed hitters to get on base more and have a higher on-base percentage(OBP). However, this is not the case as LH hitters have almost identical OBPs to RH hitters. This is likely because the bases are 90ft apart, and such a far distance makes any advantage a LH hitter has to beat the throw to first negligible. The results might be different for a sport like softball in which the bases are 60ft apart and an LH hitter’s advantage may be significant, but for baseball it is not.</p>
-<p>P.S. I’M aware this is a very simple data analysis but it took me 3 hrs to figure out how to merge all the datasets so please be nice</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#getting the ATE of on base percentage </span></span>
+<span></span>
+<span><span class='va'>ate_obp</span> <span class='op'>&lt;-</span> <span class='va'>obp_chart</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span></span>
+<span>    ATE <span class='op'>=</span> <span class='va'>`L`</span> <span class='op'>-</span> <span class='va'>`R`</span></span>
+<span>  <span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>ATE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'>#in the datset obp is a character which is annoying so we need to change it to a numeric value </span></span>
+<span><span class='va'>stats_2017_na</span><span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span></span>
+<span>    obp_numeric <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>obp</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>ate_boots_obp</span><span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>specify</span><span class='op'>(</span><span class='va'>obp_numeric</span><span class='op'>~</span><span class='va'>stand</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>generate</span><span class='op'>(</span>reps <span class='op'>=</span> <span class='fl'>1000</span>, type <span class='op'>=</span> <span class='st'>"bootstrap"</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>calculate</span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"diff in means"</span>, order <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"L"</span>, <span class='st'>"R"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class='va'>null_obp</span> <span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>specify</span><span class='op'>(</span><span class='va'>obp_numeric</span><span class='op'>~</span><span class='va'>stand</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>hypothesize</span><span class='op'>(</span>null <span class='op'>=</span> <span class='st'>"independence"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>generate</span><span class='op'>(</span>reps <span class='op'>=</span> <span class='fl'>1000</span>,type <span class='op'>=</span> <span class='st'>"permute"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>calculate</span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"diff in means"</span>, order <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"L"</span>, <span class='st'>"R"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>obp_ci_95</span> <span class='op'>&lt;-</span> <span class='va'>ate_boots_obp</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>get_confidence_interval</span><span class='op'>(</span>level <span class='op'>=</span> <span class='fl'>.95</span>, type <span class='op'>=</span> <span class='st'>"percentile"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>obp_ci_95</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">lower_ci</th>
+<th style="text-align: right;">upper_ci</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">-0.0120504</td>
+<td style="text-align: right;">0.0092288</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>p_obp</span><span class='op'>&lt;-</span> <span class='va'>null_obp</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'>get_p_value</span><span class='op'>(</span>obs_stat <span class='op'>=</span> <span class='va'>ate_obp</span>, direction <span class='op'>=</span> <span class='st'>"greater"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>p_obp</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">p_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.608</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>null_obp</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>visualize</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>shade_p_value</span><span class='op'>(</span>obs_stat <span class='op'>=</span> <span class='va'>ate_obp</span>, direction <span class='op'>=</span> <span class='st'>"greater"</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Simulation- Based Null Distribution"</span>, subtitle <span class='op'>=</span> <span class='st'>"On Base Percentages"</span>, x <span class='op'>=</span> <span class='st'>"Difference in On Base Percentages"</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/obp_significance-1.png" width="624" /></p>
+</div>
+<p>As you can see by this table and the p-value, there is very little difference in the average on base percentages for Left Handed Hitters(LH) and Right Handed Hitters(RH), and in fact, on average, RH hitters have a slightly higher on base percentage . This supports my hypothesis that left handed hitters do not have a higher on-base percentage than right handed hitters. Many baseball coaches conject that left handed hitters have an advantage because they are closer to first base and have a better chance at beating the throw to first. If this were true, then we would expect left handed hitters to get on base more and have a higher on-base percentage(OBP). However, this is not the case as LH hitters have almost identical OBPs to RH hitters. This is likely because the bases are 90ft apart, and such a far distance makes any advantage a LH hitter has to beat the throw to first negligible. The results might be different for a sport like softball in which the bases are 60ft apart and an LH hitter’s advantage may be significant, but for baseball it is not.</p>
+<p>DO LEFT-HANDED BATTERS HIT BETTER OFF OF RIGHT HANDED PITCHERS THAN RIGHT HANDED BATTERS?</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>BA_table</span>, col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Batter Stance"</span>, <span class='st'>"LHP"</span>, <span class='st'>"RHP"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Batter Stance</th>
+<th style="text-align: right;">LHP</th>
+<th style="text-align: right;">RHP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">L</td>
+<td style="text-align: right;">0.2344961</td>
+<td style="text-align: right;">0.2374256</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R</td>
+<td style="text-align: right;">0.2360992</td>
+<td style="text-align: right;">0.2298368</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Based off the table, LH hitters have a higher batting average off of RH pitchers than RH hitters, but have a lower batting average off of LH pitchers than RH hitters. This gives some insight into the opposite-stance, opposite-pitcher belief in which is thought that batters hit better off of pitchers who throw with the opposite hand because they can see the ball better. For instance, LH batters hit better off of RH pitcher and RH batters hit better off of LH pitcher. We need to run a significance test to determine whether the data supports that belief.</p>
+BOOTSTRAPPING TO DETERMINE SIGNIFICANT
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ate_pitcher</span> <span class='op'>&lt;-</span><span class='va'>batter_db</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>events</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"walk"</span>,<span class='st'>"hit_by_pitch"</span>,<span class='st'>""</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>mutate</span> <span class='op'>(</span></span>
+<span>    hit <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>events</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"single"</span>,<span class='st'>"double"</span>,<span class='st'>"triple"</span>,<span class='st'>"home_run"</span><span class='op'>)</span>,<span class='fl'>1</span>,<span class='fl'>0</span><span class='op'>)</span></span>
+<span>    <span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>stand</span>,<span class='va'>p_throws.x</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>summarize</span><span class='op'>(</span>BA_hand <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>hit</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>pivot_wider</span><span class='op'>(</span></span>
+<span>  names_from <span class='op'>=</span> <span class='va'>stand</span>,</span>
+<span>  values_from <span class='op'>=</span> <span class='va'>BA_hand</span></span>
+<span>    </span>
+<span>  <span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span></span>
+<span>    ATE <span class='op'>=</span> <span class='va'>`L`</span> <span class='op'>-</span> <span class='va'>`R`</span></span>
+<span>  <span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>p_throws.x</span>,<span class='va'>ATE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>ate_pitcher</span>, col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Pitcher Handedness"</span>, <span class='st'>"ATE"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Pitcher Handedness</th>
+<th style="text-align: right;">ATE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">L</td>
+<td style="text-align: right;">-0.0016031</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R</td>
+<td style="text-align: right;">0.0075888</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/tidymodels/infer'>infer</a></span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>02138</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>ate_RHP</span> <span class='op'>&lt;-</span> <span class='va'>ate_pitcher</span><span class='op'>[</span><span class='fl'>2</span>,<span class='op'>]</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>ATE</span><span class='op'>)</span></span>
+<span>  </span>
+<span></span>
+<span></span>
+<span><span class='va'>BA_db_rhp</span><span class='op'>&lt;-</span><span class='va'>batter_db</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>p_throws.x</span><span class='op'>==</span> <span class='st'>"R"</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>events</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"walk"</span>,<span class='st'>"hit_by_pitch"</span>,<span class='st'>""</span><span class='op'>)</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>mutate</span> <span class='op'>(</span></span>
+<span>    hit <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>events</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"single"</span>,<span class='st'>"double"</span>,<span class='st'>"triple"</span>,<span class='st'>"home_run"</span><span class='op'>)</span>,<span class='fl'>1</span>,<span class='fl'>0</span><span class='op'>)</span></span>
+<span>    <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>ate_boots_pitcher</span><span class='op'>&lt;-</span> <span class='va'>BA_db_rhp</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/specify.html'>specify</a></span><span class='op'>(</span><span class='va'>hit</span><span class='op'>~</span><span class='va'>stand</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/generate.html'>generate</a></span><span class='op'>(</span>reps <span class='op'>=</span> <span class='fl'>1000</span>, type <span class='op'>=</span> <span class='st'>"bootstrap"</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/calculate.html'>calculate</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"diff in means"</span>, order <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"L"</span>, <span class='st'>"R"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class='va'>null_pitcher</span> <span class='op'>&lt;-</span> <span class='va'>BA_db_rhp</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/specify.html'>specify</a></span><span class='op'>(</span><span class='va'>hit</span><span class='op'>~</span><span class='va'>stand</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/hypothesize.html'>hypothesize</a></span><span class='op'>(</span>null <span class='op'>=</span> <span class='st'>"independence"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/generate.html'>generate</a></span><span class='op'>(</span>reps <span class='op'>=</span> <span class='fl'>1000</span>,type <span class='op'>=</span> <span class='st'>"permute"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/calculate.html'>calculate</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"diff in means"</span>, order <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"L"</span>, <span class='st'>"R"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>pitcher_ci_95</span> <span class='op'>&lt;-</span> <span class='va'>ate_boots_pitcher</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/get_confidence_interval.html'>get_confidence_interval</a></span><span class='op'>(</span>level <span class='op'>=</span> <span class='fl'>.95</span>, type <span class='op'>=</span> <span class='st'>"percentile"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>pitcher_ci_95</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">lower_ci</th>
+<th style="text-align: right;">upper_ci</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">-0.0183303</td>
+<td style="text-align: right;">0.0340138</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>p_pitcher</span><span class='op'>&lt;-</span> <span class='va'>null_pitcher</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'><a href='https://infer.tidymodels.org/reference/get_p_value.html'>get_p_value</a></span><span class='op'>(</span>obs_stat <span class='op'>=</span> <span class='va'>ate_RHP</span>, direction <span class='op'>=</span> <span class='st'>"greater"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>p_pitcher</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">p_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.295</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>null_pitcher</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/visualize.html'>visualize</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/shade_p_value.html'>shade_p_value</a></span><span class='op'>(</span>obs_stat <span class='op'>=</span> <span class='va'>ate_RHP</span>, direction <span class='op'>=</span> <span class='st'>"greater"</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Simulation- Based Null Distribution"</span>, subtitle <span class='op'>=</span> <span class='st'>"Batting averages with a Right-handed pitcher"</span>, x <span class='op'>=</span> <span class='st'>"Difference in Batting Average"</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/boots_pitcher-1.png" width="624" /></p>
+</div>
+<p>Based on the confidence interval containing 0 and the p-value of .291, there is not enough evidence to reject the null, and therefore, we can conclude that there is not sufficient evidence to support that Left-handed batters hit better off of right-handed pitchers than right-handed batters.</p>
+<p>DO LEFT HANDED HITTERS HAVE LESS DOUBLE PLAYS?</p>
+<p>Finally, if LHH were less likely to be a victim of a double play, they would have a higher BA with a runner on 1st and less than 2 outs than RHH. Finding a positive correlation between LHH and BA with runner on 1st and less than 2 outs would support my hypothesis. No correlation between any of the 3 focuses of study or a negative correlation would disprove my hypothesis.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>double_play</span> <span class='op'>&lt;-</span><span class='va'>stats_2017_na</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>stand</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>summarize</span><span class='op'>(</span>db_mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ground_into_double_play</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>pivot_wider</span><span class='op'>(</span></span>
+<span>    names_from <span class='op'>=</span> <span class='va'>stand</span>,</span>
+<span>    values_from <span class='op'>=</span> <span class='va'>db_mean</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>double_play</span>, col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"LHH"</span>,<span class='st'>"RHH"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">LHH</th>
+<th style="text-align: right;">RHH</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">11.25</td>
+<td style="text-align: right;">13.27907</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>BOOTSTRAPPING TO DETERNMINE SIGNIFICANT DIFFERENCE</p>
+<p>Using stat_2017 data</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ate_dbstat</span> <span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>stand</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>summarize</span><span class='op'>(</span>db_mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ground_into_double_play</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>pivot_wider</span><span class='op'>(</span></span>
+<span>    names_from <span class='op'>=</span> <span class='va'>stand</span>,</span>
+<span>    values_from <span class='op'>=</span> <span class='va'>db_mean</span></span>
+<span>  <span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span></span>
+<span>    ATE <span class='op'>=</span> <span class='va'>`L`</span> <span class='op'>-</span> <span class='va'>`R`</span></span>
+<span>  <span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span><span class='fu'>select</span><span class='op'>(</span><span class='va'>ATE</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>ate_boots_dbstat</span><span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/specify.html'>specify</a></span><span class='op'>(</span><span class='va'>ground_into_double_play</span><span class='op'>~</span><span class='va'>stand</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/generate.html'>generate</a></span><span class='op'>(</span>reps <span class='op'>=</span> <span class='fl'>1000</span>, type <span class='op'>=</span> <span class='st'>"bootstrap"</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/calculate.html'>calculate</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"diff in means"</span>, order <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"L"</span>, <span class='st'>"R"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>null_dbstat</span> <span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/specify.html'>specify</a></span><span class='op'>(</span><span class='va'>ground_into_double_play</span><span class='op'>~</span><span class='va'>stand</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/hypothesize.html'>hypothesize</a></span><span class='op'>(</span>null <span class='op'>=</span> <span class='st'>"independence"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/generate.html'>generate</a></span><span class='op'>(</span>reps <span class='op'>=</span> <span class='fl'>1000</span>,type <span class='op'>=</span> <span class='st'>"permute"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/calculate.html'>calculate</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"diff in means"</span>, order <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"L"</span>, <span class='st'>"R"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>dbstat_ci_99</span> <span class='op'>&lt;-</span> <span class='va'>ate_boots_dbstat</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/get_confidence_interval.html'>get_confidence_interval</a></span><span class='op'>(</span>level <span class='op'>=</span> <span class='fl'>.99</span>, type <span class='op'>=</span> <span class='st'>"percentile"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>dbstat_ci_99</span></span></code></pre>
+</div>
+<pre><code># A tibble: 1 × 2
+  lower_ci upper_ci
+     &lt;dbl&gt;    &lt;dbl&gt;
+1    -4.32   0.0257</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>p_dbstat</span><span class='op'>&lt;-</span> <span class='va'>null_dbstat</span> <span class='op'>|&gt;</span></span>
+<span><span class='fu'><a href='https://infer.tidymodels.org/reference/get_p_value.html'>get_p_value</a></span><span class='op'>(</span>obs_stat <span class='op'>=</span> <span class='va'>ate_dbstat</span>, direction <span class='op'>=</span> <span class='st'>"left"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>p_dbstat</span></span></code></pre>
+</div>
+<pre><code># A tibble: 1 × 1
+  p_value
+    &lt;dbl&gt;
+1   0.002</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ate_boots_dbstat</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/visualize.html'>visualize</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/dbplay-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>null_dbstat</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/visualize.html'>visualize</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://infer.tidymodels.org/reference/shade_p_value.html'>shade_p_value</a></span><span class='op'>(</span>obs_stat <span class='op'>=</span> <span class='va'>ate_dbstat</span>, direction <span class='op'>=</span> <span class='st'>"left"</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Simulation- Based Null Distribution"</span>, subtitle <span class='op'>=</span> <span class='st'>"Number of times grounded into double play"</span>, x <span class='op'>=</span> <span class='st'>"Difference in number of times grounded into double play"</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/dbplay-2.png" width="624" /></p>
+</div>
+<p>I took a bootstrap for this data, as the database only covers data from the 2017 season. To estimate the ATE throughout all seasons we need to bootstrap and examine if there is a significant difference in means.The 99% confidence interval does not contain 0 which means that it is possible for there to be a significant difference in the number of times a batter grounds out to first base given that they are left handed or right handed. This is further supported by our very low p-value of .003 which is less than alpha .01, thus we can reject the null hypothesis . Therefore, there is evidence to support that left handed hitters are less likely to be victim to double plays.</p>
+<p>RUNNING A LINEAR REGRESSION</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>stats_2017_na</span> <span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>stand_numeric <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>stand</span> <span class='op'>==</span> <span class='st'>"L"</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>regression</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>avg</span> <span class='op'>~</span> <span class='va'>stand</span><span class='op'>+</span><span class='va'>plate_appearances</span>, data <span class='op'>=</span> <span class='va'>stats_2017_na</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>var_labels2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span>  <span class='st'>"(Intercept)"</span> <span class='op'>=</span> <span class='st'>"Avg. BA of LHH"</span>,</span>
+<span>  <span class='st'>"standR"</span> <span class='op'>=</span> <span class='st'>"RHH"</span>,</span>
+<span>  <span class='st'>"plate_appearances"</span> <span class='op'>=</span> <span class='st'>"Plate Appearances"</span></span>
+<span><span class='op'>)</span> </span>
+<span></span>
+<span><span class='fu'>modelsummary</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/modelsummary/man/modelsummary.html'>modelsummary</a></span><span class='op'>(</span><span class='va'>regression</span>,</span>
+<span>                           statistic <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"s.e. = {std.error}"</span>,</span>
+<span>                                         <span class='st'>"p = {p.value}"</span><span class='op'>)</span>,</span>
+<span>                           coef_map <span class='op'>=</span> <span class='va'>var_labels2</span>,</span>
+<span>                           gof_map <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"nobs"</span>, <span class='st'>"r.squared"</span>, <span class='st'>"adj.r.squared"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+ (1)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Avg. BA of LHH
+</td>
+<td style="text-align:center;">
+0.214
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.023
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RHH
+</td>
+<td style="text-align:center;">
+0.005
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.004
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.266
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Plate Appearances
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1.5px">
+p = 0.016
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+154
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.047
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.035
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The main coefficient of interest in this study is stand which represents whether the batter is left handed or right handed. When calculating the regression, based on the table, you can see that on average, right handed hitters have a batting average .005 points more than left-handed hitters when controlling for plate appearances. However, this difference is not statistically significant as the p-value is .226, therefore we cannot interpret it causually and there is not enough evidence to determine that left-handed hitters have an advantage.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>obp_chart</span> <span class='op'>&lt;-</span> <span class='va'>stats_2017_na</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>stand</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>summarize</span><span class='op'>(</span>obp_mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>obp_numeric</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>pivot_wider</span><span class='op'>(</span></span>
+<span>    names_from <span class='op'>=</span> <span class='va'>stand</span>,</span>
+<span>    values_from <span class='op'>=</span> <span class='va'>obp_mean</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>obp_chart</span> </span></code></pre>
+</div>
+<pre><code># A tibble: 1 × 2
+      L     R
+  &lt;dbl&gt; &lt;dbl&gt;
+1 0.342 0.343</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit_obp</span><span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>obp_numeric</span> <span class='op'>~</span> <span class='va'>stand</span> <span class='op'>+</span> <span class='va'>plate_appearances</span>, data <span class='op'>=</span> <span class='va'>stats_2017_na</span><span class='op'>)</span></span>
+<span></span>
+<span> <span class='va'>var_labels</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span>  <span class='st'>"(Intercept)"</span> <span class='op'>=</span> <span class='st'>"Avg. OBP of LHH"</span>,</span>
+<span>  <span class='st'>"standR"</span> <span class='op'>=</span> <span class='st'>"RHH"</span>,</span>
+<span>  <span class='st'>"plate_appearances"</span> <span class='op'>=</span> <span class='st'>"Plate Appearances"</span></span>
+<span><span class='op'>)</span> </span>
+<span></span>
+<span><span class='fu'>modelsummary</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/modelsummary/man/modelsummary.html'>modelsummary</a></span><span class='op'>(</span><span class='va'>fit_obp</span>,</span>
+<span>                           statistic <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"s.e. = {std.error}"</span>,</span>
+<span>                                         <span class='st'>"p = {p.value}"</span><span class='op'>)</span>,</span>
+<span>                           coef_map <span class='op'>=</span> <span class='va'>var_labels</span>,</span>
+<span>                           gof_map <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"nobs"</span>, <span class='st'>"r.squared"</span>, <span class='st'>"adj.r.squared"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+ (1)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Avg. OBP of LHH
+</td>
+<td style="text-align:center;">
+0.274
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.028
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RHH
+</td>
+<td style="text-align:center;">
+0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.006
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.869
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Plate Appearances
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1.5px">
+p = 0.015
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+154
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.039
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.026
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>When running a regression to examine whether there is a significant difference between the on base percentages of LH hitters and RH hitters there is evidence that there is no significant difference. On average, a right handed hitter has an on-base percentage .002 points higher that a LH hitter, but that difference is not statistically significant as the p-value is .783.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit_dbplay</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>ground_into_double_play</span> <span class='op'>~</span> <span class='va'>stand</span><span class='op'>+</span><span class='va'>stolen_bases</span>, data <span class='op'>=</span> <span class='va'>stats_2017_na</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class='va'>var_labels3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span>  <span class='st'>"(Intercept)"</span> <span class='op'>=</span> <span class='st'>"Avg. # grounding into double play LHH"</span>,</span>
+<span>  <span class='st'>"standR"</span> <span class='op'>=</span> <span class='st'>"RHH"</span>,</span>
+<span>  <span class='st'>"stolen_bases"</span> <span class='op'>=</span> <span class='st'>"Stolen Bases"</span></span>
+<span><span class='op'>)</span> </span>
+<span></span>
+<span><span class='fu'>modelsummary</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/modelsummary/man/modelsummary.html'>modelsummary</a></span><span class='op'>(</span><span class='va'>fit_dbplay</span>,</span>
+<span>                           statistic <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"s.e. = {std.error}"</span>,</span>
+<span>                                         <span class='st'>"p = {p.value}"</span><span class='op'>)</span>,</span>
+<span>                           coef_map <span class='op'>=</span> <span class='va'>var_labels3</span>,</span>
+<span>                           gof_map <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"nobs"</span>, <span class='st'>"r.squared"</span>, <span class='st'>"adj.r.squared"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+ (1)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Avg. # grounding into double play LHH
+</td>
+<td style="text-align:center;">
+12.399
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.670
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RHH
+</td>
+<td style="text-align:center;">
+2.248
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.791
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.005
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stolen Bases
+</td>
+<td style="text-align:center;">
+−0.137
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.038
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1.5px">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+154
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.115
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.103
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In order to better determine whether the results were statistically significant I controlled for plate appearances and caught stealing.A player’s speed could be a confounding variable as the faster a player is the less likely they are to ground out into a double play. Unfortunately, a players speed is not in this database, so I had to approximate using stolen bases as a player’s speed heavily influences how many bases a player steals in a season. It is interesting that even when controlling for these variables the results were still statistically significant and, on average,left handed hitters grounded into less double plays than right handed hitters. Even though there is enough evidence to reject the null hypothesis, we still cannot assume causality. Causality can only be proven through an experiment not an observational study.</p>
+<table>
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">## CONCLUSION</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">To summarize, the differences in average on base percentages between Left Handed hitters(LH) and right handed hitters is not significantly different, and in fact RH hitters have a slightly higher OBP than LH hitters. This supports my hypothesis that there is no significant difference in the mean OBP most likely because the bases in baseball are 90 ft apart which is far enough to make the advantage of LH hitters having an extra step to the base negligible. Additionally, there were no significant differences in the mean batting averages of LH hitters and RH hitters when hitting against a RH Pitcher. This does not support my hypothesis and actually debunks the belief that LH hitters have an advantage because they hit better off of RH pitchers and most pitchers in the MLB are right handed. While the average batting average for LH hitters off of RH pitchers is a little higher, giving some merit to this belief, ultimately the difference is not statistically significant. Finally, on average, LH hitters grounded out into a double play less than RH hitters. Also, the difference in the average number of times an LH batter vs a RH batter grounds out into a double play is statistically significant with a p- value less than .01. This gives us evidence to reject the null hypothesis that there are no difference in means and supports my hypothesis that being closer to first base makes a difference on not grounding out into a double play. The limitations of this analysis are that the data is only from the 2017 season. Though I tried to estimate the average difference in means in other seasons through bootstrapping, it is less accurate because I only used one sample. On a similar note, having baseball statistics in r is a fairly new technology and there aren’t usable datasets before 2014. It is possible that including statistics from more seasons might change the results of the study. As previously mentioned, some confounding variables that may threaten the inference are the speed and experience of the player. If the player is faster, they might have a significantly higher OBP and/or ground into less double plays. A player’s experience(seasons played in the MLB) may also be a confounding variable as rookie batters may perform less than veterans. Also, over time players may get better and consequently have better batting averages and OBPs the more years they have been playing in the league and facing the same pitchers. To improve my analysis, I would use statistics from multiple seasons and also merge the dataset with a dataset that contains the speeds and experience of all the players. Having a larger sample size would increase the reliability of my analysis to generalize to the population. Also by merging the datasets I could control those variables and/or examine the relationship between them.</td>
+</tr>
+</tbody>
+</table>
+<p>FINAL PROJECT RUBRIC</p>
+<p>Introduction: describe the research question and main hypothesis; describe why it is important. (1-2 paragraphs) (2pts)</p>
+<p>Data section: 2-3 paragraphs + plot visualizing main outcome of interest. (3pts)</p>
+<p>Results section: plot of main analysis + regression output + 2-3 paragraphs of description and interpretation of the plots and regression (including interpreting the main coefficient of interest and describing if it is statistically significant and if we should interpret it causally). This section could be longer if you choose to include additional analyses. (8pts)</p>
+<p>Conclusion section: 1 paragraph (i) summarizing results and assessing the extent to which you find support for your hypothesis; (ii) describing limitations of the analysis and threats to inference (missing data, confounding, etc), and stating how you could improve your analysis if you had more time/money. (2pts)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
